@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<title>Perlamutr</title>
+</head>
+<body>
+	<div class="top">
+		<div class="tp">
+			<div><a href="#1">Услуги</a></div>
+			<div><a href="#2">О нас</a></div>
+			<div><a href="#3">Акции</a></div>
+			<div><a href="#4">Команда</a></div>
+			<div><a href="#6">Отзывы</a></div>
+			<div><a href="#7">Контакты</a></div>
+		</div>
+		<div class="txt">
+			<div>г. Новосибирск, ул. Красный проспект, 220 корп. 10, 2 этаж, офис 207</div>
+			<div>Время работы: ежедневно с 9:00 до 21:00</div>
+		</div>
+		<button id="openModalBtn">Открыть окно</button>
+	    <!-- Модальное окно -->
+	    <div id="dialog" class="dialog">
+		    <div class="dialog-content">
+		      <span class="close-btn" id="close">&times;</span>
+		      <!-- Шаг 1: Выбор процедуры -->
+		      <div id="step1" class="step">
+		        <h2>Выберите процедуру</h2>
+		        <ul id="procedure-list" class="list">
+		          <li data-procedure="Отбеливание">Отбеливание</li>
+		          <li data-procedure="Диагностика">Диагностика</li>
+		          <li data-procedure="Реставрация">Реставрация</li>
+		          <li data-procedure="Протезирование">Протезирование</li>
+		          <li data-procedure="Хирургия">Хирургия</li>
+		          <li data-procedure="Ортодонтия">Ортодонтия</li>
+		          <li data-procedure="Имплантация">Имплантация</li>
+		          <li data-procedure="Эндодонтия">Эндодонтия</li>
+		          <li data-procedure="Профилактика">Профилактика</li>
+		          <li data-procedure="Лечение кариеса">Лечение кариеса</li>
+		        </ul>
+		        <button id="next1" class="next-btn buttonsreg" disabled>Дальше</button>
+		      </div>
+
+		      <!-- Шаг 2: Выбор врача -->
+		      <div id="step2" class="step hidden">
+		        <h2>Выберите врача</h2>
+		        <ul id="doctor-list" class="list">
+		          <li data-doctor="Рябцева Елена Григорьевна">Рябцева Елена Григорьевна</li>
+		          <li data-doctor="Рябцева Дарья Сергеевна">Рябцева Дарья Сергеевна</li>
+		          <li data-doctor="Позднякова Наталья Анатольевна">Позднякова Наталья Анатольевна</li>
+		          <li data-doctor="Спиридонова Анастасия Евгеньевна">Спиридонова Анастасия Евгеньевна</li>
+		          <li data-doctor="Старовойтова Анна Петровна">Старовойтова Анна Петровна</li>
+		          <li data-doctor="Леонов Алексей Юрьевич">Леонов Алексей Юрьевич</li>
+		        </ul>
+		        <button id="back2" class="back-btn buttonsreg">Назад</button>
+		        <button id="next2" class="next-btn buttonsreg" disabled>Дальше</button>
+		      </div>
+
+		      <!-- Шаг 3: Выбор даты и времени -->
+		      <div id="step3" class="step hidden">
+		        <h2>Выберите дату и время</h2>
+		        <div class="calendar">
+		          <div id="calendar-header">
+		            <button id="prev-month buttonsreg">&lt;</button>
+		            <span id="current-month"></span>
+		            <button id="next-month buttonsreg">&gt;</button>
+		          </div>
+		          <div id="calendar-days"></div>
+		        </div>
+		        <div id="time-slots" class="hidden">
+		          <h3>Доступное время</h3>
+		          <ul id="time-list" class="list"></ul>
+		        </div>
+		        <button id="back3" class="back-btn buttonsreg">Назад</button>
+		        <button id="next3" class="next-btn buttonsreg" disabled>Дальше</button>
+		      </div>
+
+		      <!-- Шаг 4: Подтверждение данных -->
+		      <div id="step4" class="step hidden">
+		        <h2>Подтверждение записи</h2>
+		        <p><strong>Процедура:</strong> <span id="selected-procedure"></span></p>
+		        <p><strong>Врач:</strong> <span id="selected-doctor"></span></p>
+		        <p><strong>Дата:</strong> <span id="selected-date"></span></p>
+		        <p><strong>Время:</strong> <span id="selected-time"></span></p>
+		        <input type="text" id="name" placeholder="Ваше имя" required>
+		        <input type="tel" id="phone" placeholder="Ваш телефон" required>
+		        <button id="back4" class="back-btn buttonsreg">Назад</button>
+		        <button id="confirm-btn">Подтвердить</button>
+		      </div>
+		    </div>
+		</div>
+		<form id="contact-form" action="https://formspree.io/f/xqapqaer" method="POST">
+	    <script src="script/script1.js"></script>
+	</div>
+	<div class="yslugi" id="1">
+		<div class="topname" id="otzuvis">Услуги</div>
+		<div id="popup" class="popup">
+		    <div class="popup-content">
+		      <span class="close1-btn" id="close1">&times;</span>
+		      <h2 id="popup-title"></h2>
+		      <p id="popup-text"></p>
+		    </div>
+	  	</div>
+		<div class="row1">
+			<div class="service-btn" data-service="Отбеливание">
+				<p class="img1"><img src="pictures/image.png" style="width:10vw"></img></p>
+				<p class="text">Отбеливание</p>
+			</div>
+			<div class="service-btn" data-service="Диагностика">
+				<p class="img1"><img src="pictures/image1.png" style="width:10vw"></img></p>
+				<p class="text">Диагностика</p>
+			</div>
+			<div class="service-btn" data-service="Реставрация">
+				<p class="img1"><img src="pictures/image2.png" style="width:10vw"></img></p>
+				<p class="text">Реставрация</p>
+			</div>
+			<div class="service-btn" data-service="Протезирование">
+				<p class="img1"><img src="pictures/image3.png" style="width:10vw"></img></p>
+				<p class="text">Протезирование</p>
+			</div>
+			<div class="service-btn" data-service="Хирургия">
+				<p class="img1"><img src="pictures/image4.png" style="width:10vw"></img></p>
+				<p class="text">Хирургия</p>
+			</div>
+		</div>
+		<div class="row2">
+			<div class="r6 service-btn" data-service="Ортодонтия">
+				<p class="img1"><img src="pictures/image2.png" style="width:10vw"></img></p>
+				<p class="text">Ортодония</p>
+			</div>
+			<div  class="service-btn" data-service="Имплантация">
+				<p class="img1"><img src="pictures/image3.png" style="width:10vw"></img></p>
+				<p class="text">Имплантация</p>
+			</div>
+			<div class="service-btn" data-service="Эндодонтия">
+				<p class="img1"><img src="pictures/image6.png" style="width:10vw"></img></p>
+				<p class="text">Эндодонтия</p>
+			</div>
+			<div class="service-btn" data-service="Профилактика">
+				<p class="img1"><img src="pictures/image5.png" style="width:10vw"></img></p>
+				<p class="text">Профилактика</p>
+			</div>
+			<div class="service-btn" data-service="Лечение кариеса">
+				<p class="img1"><img src="pictures/image4.png" style="width:10vw"></img></p>
+				<p class="text">Лечение кариеса</p>
+			</div>
+		</div>
+		<script src="script/script4.js"></script>
+	</div>
+	<div class="aboutus" id="2">
+		<div class="topname" id="otzuvis">О нас</div>
+		<div>
+			<div class="sertificates"><img src="pictures/design.png"></img></div>
+			<div class="about">
+				<div id="stom">Стоматология «Perlamutr» — уютная клиника для приема своих любимых пациентов. Мы рады уделить Вам внимание и предложить качественные стоматологические услуги. 
+				Наша команда сформирована из врачей- специалистов с достойным уровнем знаний и практических навыков.
+				</div>
+				<div>Мы следим за новинками в стоматологии, используем в работе современные материалы и методики. Посещаем учебные мероприятия, семинары, конгрессы для того, чтобы создать для вас достойное качество врачебной помощи. 
+				</div>
+				<div>Наш коллектив образовался как команда специалистов, объединенных глубоким интересом и увлеченных своей работой, как творчеством. Лучшая реклама для наших докторов — это эмоции и рекомендации благодарных пациентов.
+				</div>
+			</div>
+		</div>
+		<div class="pluses">
+		   	<div class="ulname">Стоматологическая клиника «ПЕРЛАМУТР» в Новосибирске имеет ряд весомых преимуществ:</div>
+			<div><ul class="uli">
+				<li class="blue">Лицензия на все виды лечебной деятельности нашего медицинского центра</li>
+				<li class="yellow">Составление договора на все виды услуг, которые оказываются в медицинском центре</li>
+				<li class="blue">Оказание полного спектра стоматологических услуг</li>
+				<li class="yellow">Полноценная комплексная стоматологическая диагностика перед началом лечения</li>
+				<li class="blue">Работа на современном оборудовании, применение только сертифицированных расходных материалов от ведущих европейских фирм-производителей, при обязательном строгом соблюдении технологий их применения</li>
+				<li class="yellow">Высокий уровень подготовки персонала</li>
+				<li class="blue">Обеспечение максимального комфорта для пациента во врачебных кабинетах</li>
+				<li class="yellow">Соблюдение всех правил асептики и антисептики, обработка инструментов по системе АнтиСПИД и АнтиГепатит</li>
+				<li class="blue">Выполнение всех лечебно-диагностических манипуляций строго по медицинским показаниям в соответствии с международными стандартами и научными разработками</li>
+				<li class="yellow">Безболезненность любой процедуры — от лечения кариеса до сложного хирургического вмешательства</li>
+				<li class="blue">Индивидуальных подход к каждому пациенту</li>
+				<li class="yellow">Уютная обстановка и атмосфера центра</li>
+				<li class="blue">Высокое качество стоматологических услуг, по доступным ценам</li>
+				<li class="yellow">Медицинский контроль после окончания курса лечения</li>
+			</ul></div>
+		</div>
+		<div>
+			<div class="slider">
+		        <div class="slides">
+		            <img src="pictures/image7.png" alt="Фото 1">
+		            <img src="pictures2.0/image.png" alt="Фото 2">
+		            <img src="pictures2.0/image1.png" alt="Фото 3">
+		            <img src="pictures2.0/image2.png"  alt="Фото 4">
+		            <img src="pictures2.0/image3.png"  alt="Фото 5">
+		            <img src="pictures2.0/image4.png"  alt="Фото 6">
+		            <img src="pictures2.0/image5.png"  alt="Фото 7">
+		            <img src="pictures2.0/image6.png"  alt="Фото 8">
+		            <img src="pictures2.0/image7.png"  alt="Фото 9">
+		            <img src="pictures2.0/image8.png" alt="Фото 10">
+		            <img src="pictures3.0/image9.png" alt="Фото 11">
+		            <img src="pictures3.0/image10.png" alt="Фото 12">
+		            <img src="pictures3.0/image11.png" alt="Фото 13">
+		            <img src="pictures3.0/image12.png" alt="Фото 14">
+		            <img src="pictures3.0/image13.png" alt="Фото 15">
+		            <img src="pictures3.0/image14.png" alt="Фото 16">
+		            <img src="pictures3.0/image15.png" alt="Фото 17">
+		            <img src="pictures3.0/image16.png" alt="Фото 18">
+		        </div>
+		        <button class="button prev" onclick="changeSlide(-1)">&larr;</button>
+		        <button class="button next" onclick="changeSlide(1)">&rarr;</button>
+		        <script src="script/script.js"></script>
+		    </div>
+		</div>
+	<div class="actions" id="3">
+			<div class="topname" id="consul">Консультация и составление плана лечения - бесплатно</div>
+			<div class="slider1">
+		        <div class="slides1" >
+		            <div class="imageSlides active"><img src="pictures5.0/image.jpg" alt="Фото 1"></div>
+		            <div class="imageSlides "><img src="pictures5.0/image1.jpg" alt="Фото 2"></div>
+		            <div class="imageSlides "><img src="pictures5.0/image10.png" alt="Фото 3"></div>
+		            <div class="imageSlides "><img src="pictures5.0/image2.jpg"  alt="Фото 4"></div>
+		            <div class="imageSlides "><img src="pictures5.0/image3.png"  alt="Фото 5"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/image4.png"  alt="Фото 6"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/image5.png"  alt="Фото 7"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/image6.png"  alt="Фото 8"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/image7.png"  alt="Фото 9"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/image8.png" alt="Фото 10"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/image9.png" alt="Фото 11"></div>
+		            <div class="imageSlides active"><img src="pictures5.0/svg2.png" alt="Фото 12"></div>
+		        </div>
+		    </div>
+		</div>
+	<div id="4" class="commands">
+			<div class="topname" id="otzuvis">Наша команда</div>
+			<div>
+				<div class="aboutcommand" id="doctor">
+					<img src="./pictures4.0/doctor.jpg">
+					<img src="./pictures4.0/doctor1.jpg">
+					<img src="./pictures4.0/doctor2.png">
+					<!--<img src="./pictures4.0/doctor3.png">
+					<img src="./pictures4.0/doctor4.png">
+					<img src="./pictures4.0/doctor5.png">
+					<img src="./pictures4.0/doctor6.png">
+					<img src="./pictures4.0/doctor7.png">
+					<img src="./pictures4.0/doctor8.png">
+					<img src="./pictures4.0/doctor9.png">
+					<img src="./pictures4.0/doctor10.png">-->
+				</div>
+				<script src="script/script3.js"></script>
+			</div>
+		</div>
+		
+	<div id="6" class="otzuvi">
+		<div class="topname" id="otzuvis">Отзывы</div>
+		<div class="slider-container">
+		    <div class="slider2">
+		      <div class="slide2 active">
+		        <p>"Очень доволен посещением этой клиники! Профессиональный подход и качественное лечение."</p>
+		        <span>- Иван</span>
+		      </div>
+		      <div class="slide2">
+		        <p>"Спасибо за отличный сервис! Врачи настоящие профессионалы, все прошло без боли."</p>
+		        <span>- Ольга</span>
+		      </div>
+		      <div class="slide2">
+		        <p>"Лучшая стоматология в городе! Современное оборудование и приятная атмосфера."</p>
+		        <span>- Алексей</span>
+		      </div>
+		      <div class="slide2">
+		        <p>"Очень понравилось отношение к детям. Ребенок не боялся идти к врачу!"</p>
+		        <span>- Мария</span>
+		      </div>
+		      <div class="slide2">
+		        <p>"Установили виниры — улыбка просто идеальная! Спасибо за профессионализм."</p>
+		        <span>- Анна</span>
+		      </div>
+		    </div>
+    		<script src="script/script2.js"></script>
+  		</div>
+  		</div>
+  	<div id="7" class="contacts">
+  		<div class="topname" id="consul">Контакты</div>
+  		<div class="textcontacts">
+  		<div class="aboutcontacts">
+  			<div>+7 (383) 286-12-68,<br>+7(913) 007-12-68</div>
+  			<div>perlamutrdent@perlamutrdent.ru</div>
+  			<div>г. Новосибирск<br> ул.Красный проспект, 220 корп. 10 2 этаж, офис 207</div>
+  			<div>Время работы пн.- пт.: 9:00- 21:00</div>
+  			<div>Удобная парковка<br> Имеется пандус и лифт - доступно для маломобильных групп населения.</div>
+  		</div>
+  		<div class="iframe-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2284.559952803457!2d82.9105957767306!3d55.06844407283856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42dfe51c33f63147%3A0x2264303a8816199!2sPERLAMUTR!5e0!3m2!1sru!2sby!4v1739212433205!5m2!1sru!2sby" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  	</div>
+</body>
+</html>
